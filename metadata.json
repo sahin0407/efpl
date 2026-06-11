@@ -1,6 +1,0 @@
-{
-  "name": "EFPL",
-  "description": "Mobile-first eFootball tournament tracker with live standings, fixtures, and admin panel.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
