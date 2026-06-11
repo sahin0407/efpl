@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #F5F5F0;
+  --bg-surface: #FFFFFF;
+  --text-primary: #111111;
+  --text-secondary: #666666;
+  --text-muted: #A0A0A0;
+  --border-color: #E8E8E3;
+  --hero-bg: #111111;
+  --nav-bg: #FFFFFF;
+  --danger-bg: #FFF5F5;
+  --danger-border: #FFE0E0;
+  --floating-nav-bg: rgba(255, 255, 255, 0.85);
+  --floating-nav-border: rgba(200, 168, 75, 0.2);
+  --floating-nav-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.9);
+  --floating-nav-icon-active: #111111;
+}
+
+html.dark {
+  --bg-primary: #0D0D0D;
+  --bg-surface: #1A1A1A;
+  --text-primary: #F0F0F0;
+  --text-secondary: #888888;
+  --text-muted: #555555;
+  --border-color: #2A2A2A;
+  --hero-bg: #000000;
+  --nav-bg: #111111;
+  --danger-bg: #2A0808;
+  --danger-border: #4A1A1A;
+  --floating-nav-bg: rgba(20, 20, 20, 0.85);
+  --floating-nav-border: rgba(200, 168, 75, 0.15);
+  --floating-nav-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+  --floating-nav-icon-active: #F0F0F0;
+}
+
+html.theme-transitioning * {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  
+  --color-brand-primary: var(--bg-primary);
+  --color-brand-surface: var(--bg-surface);
+  --color-brand-dark: var(--text-primary);
+  --color-brand-text: var(--text-primary);
+  --color-brand-gray: var(--text-secondary);
+  --color-brand-muted: var(--text-muted);
+  --color-brand-border: var(--border-color);
+  --color-brand-hero: var(--hero-bg);
+  --color-brand-nav: var(--nav-bg);
+  --color-brand-danger-bg: var(--danger-bg);
+  --color-brand-danger-border: var(--danger-border);
+
+  --color-brand-accent: #C8A84B;
+  --color-brand-danger: #E63946;
+  --color-brand-success: #2D6A4F;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-primary text-brand-text font-sans antialiased;
+  }
+  
+  button, a {
+    @apply touch-manipulation;
+  }
+  
+  input, select, textarea {
+    @apply text-[16px]; /* Prevents iOS auto-zoom */
+  }
+}
+
+.card-editorial {
+  @apply bg-brand-surface border border-brand-border rounded-sm shadow-[0_4px_12px_rgba(0,0,0,0.06)];
+}
+
+/* Hide scrollbar for clean mobile look */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker 40s linear infinite;
+}
