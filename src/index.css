@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-primary: #F8F5FF;
+  --bg-secondary: #FFFFFF;
+  --bg-surface: #FFFFFF;
+  --text-primary: #1A0A2E;
+  --text-secondary: #6B5F8C;
+  --text-muted: #A89EC4;
+  --border-color: #E0D8F0;
+  --hero-bg: #F8F5FF;
+  --nav-bg: #FFFFFF;
+  --danger-bg: #FFF5F5;
+  --danger-border: #FFE0E0;
+  --floating-nav-bg: rgba(248, 245, 255, 0.85);
+  --floating-nav-border: rgba(124, 58, 237, 0.3);
+  --floating-nav-shadow: 0 8px 32px rgba(124, 58, 237, 0.15), 0 2px 8px rgba(124, 58, 237, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --floating-nav-icon-active: #1A0A2E;
+  
+  --hero-gradient: linear-gradient(135deg, #F8F5FF 0%, #F1E5FF 40%, #E6F5FF 70%, #F8F5FF 100%);
+  --card-shimmer: linear-gradient(135deg, #FFFFFF 0%, #F8F5FF 50%, #FFFFFF 100%);
+}
+
+html.dark {
+  --bg-primary: #0D0A1A;
+  --bg-secondary: #120D24;
+  --bg-surface: #1A1330;
+  --text-primary: #F8F7FF;
+  --text-secondary: #A89EC4;
+  --text-muted: #6B5F8C;
+  --border-color: #2D2450;
+  --hero-bg: #0D0A1A;
+  --nav-bg: #0D0A1A;
+  --danger-bg: #2A0808;
+  --danger-border: #4A1A1A;
+  --floating-nav-bg: rgba(13, 10, 26, 0.85);
+  --floating-nav-border: rgba(124, 58, 237, 0.3);
+  --floating-nav-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
+  --floating-nav-icon-active: #FFFFFF;
+  
+  --hero-gradient: linear-gradient(135deg, #0D0A1A 0%, #1A0A2E 40%, #0A1628 70%, #0D0A1A 100%);
+  --card-shimmer: linear-gradient(135deg, #1A1330 0%, #231942 50%, #1A1330 100%);
+}
+
+html.theme-transitioning * {
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease !important;
+}
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-sans: "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  
+  --color-brand-primary: var(--bg-primary);
+  --color-brand-secondary: var(--bg-secondary);
+  --color-brand-surface: var(--bg-surface);
+  --color-brand-dark: var(--text-primary);
+  --color-brand-text: var(--text-primary);
+  --color-brand-gray: var(--text-secondary);
+  --color-brand-muted: var(--text-muted);
+  --color-brand-border: var(--border-color);
+  --color-brand-hero: var(--hero-bg);
+  --color-brand-nav: var(--nav-bg);
+  --color-brand-danger-bg: var(--danger-bg);
+  --color-brand-danger-border: var(--danger-border);
+
+  --color-brand-accent: #7C3AED;
+  --color-brand-danger: #EF4444;
+  --color-brand-success: #10B981;
+  
+  --color-cyber-purple: #7C3AED;
+  --color-cyber-pink: #EC4899;
+  --color-cyber-cyan: #06B6D4;
+  --color-cyber-gold: #F59E0B;
+}
+
+@layer utilities {
+  .bg-hero-gradient {
+    background: var(--hero-gradient);
+  }
+  .bg-accent-gradient {
+    background: linear-gradient(135deg, #7C3AED, #EC4899);
+  }
+  .bg-cyan-gradient {
+    background: linear-gradient(135deg, #06B6D4, #7C3AED);
+  }
+  .bg-card-shimmer {
+    background: var(--card-shimmer);
+  }
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #7C3AED, #EC4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-brand-primary text-brand-text font-sans antialiased;
+  }
+  
+  button, a {
+    @apply touch-manipulation;
+  }
+  
+  input, select, textarea {
+    @apply text-[16px]; /* Prevents iOS auto-zoom */
+  }
+}
+
+.card-editorial {
+  @apply bg-brand-surface border border-brand-border rounded-sm shadow-[0_4px_12px_rgba(0,0,0,0.06)];
+}
+
+/* Hide scrollbar for clean mobile look */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.ticker-track {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: ticker 40s linear infinite;
+}
